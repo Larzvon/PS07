@@ -1,0 +1,32 @@
+---
+title: "Population and Life Expectancy by Country in 2007"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](https://www.oeaw.ac.at/fileadmin/_processed_/5/a/csm_slider_lebenserwartung_vid_c_shutterstock_37443b7f0f.jpg)
+
+## Packages and Data wrangling
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+
+gapminder_2007 <- gapminder %>% 
+  filter(year == 2007)
+```
+
+## Plot
+
+```{r pressure, echo=FALSE}
+ggplot(gapminder_2007, mapping = aes(x = gdpPercap, y = lifeExp, color = continent, size = pop)) + 
+  geom_point() +
+  labs(title = "Life Expectancy and Population of Countries in 2007")
+```
+
+[How many people are in the world?](https://www.worldometers.info/world-population/)
